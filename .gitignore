@@ -1,0 +1,13 @@
+node_modules/
+bin/
+dist/
+**/err.log
+**/out.log
+**/Pulumi.*.yaml
+**/yarn.lock
+**/package-lock.json
+**/yarn-error.log
+packages/*.tgz
+**/obj
+astro**.tar.gz
+.idea
