@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/pulumi-package",
+    "name": "@pulumi/pulumipackage",
     "version": "${VERSION}",
     "scripts": {
         "build": "tsc"

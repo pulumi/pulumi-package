@@ -1,31 +1,36 @@
 {
-    "name": "pulumi-package",
+    "name": "pulumipackage",
     "resources": {
-        "pulumi-package:index:StaticPage": {
+        "pulumi-package:index:Package": {
             "isComponent": true,
             "inputProperties": {
-                "indexContent": {
+                "language": {
                     "type": "string",
-                    "description": "The HTML content for index.html."
-                }
-            },
-            "requiredInputs": [
-                "indexContent"
-            ],
-            "properties": {
-                "bucket": {
-                    "$ref": "/aws/v4.0.0/schema.json#/resources/aws:s3%2Fbucket:Bucket",
-                    "description": "The bucket resource."
+                    "description": "Language of the pulumi package (typescript, go, c#, python)."
                 },
-                "websiteUrl": {
+                "name": {
                     "type": "string",
-                    "description": "The website URL."
+                    "description": "Name of the pulumi package"
+                },
+                "serverBucketName": {
+                    "type": "string",
+                    "description": "Name s3 bucket for plugin publication."
+                },
+                "serverBucketWebsiteEndpoint": {
+                    "type": "string",
+                    "description": "Website endpoint for s3 plugin server"
                 }
             },
-            "required": [
-                "bucket",
-                "websiteUrl"
-            ]
+            "plainInputs": ["language", "name"],
+            "properties": {
+                "releases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Language of the pulumi package (typescript, go, c#, python)."
+                }
+            }
         }
     },
     "language": {
@@ -37,7 +42,7 @@
         },
         "go": {
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-package/sdk/go/pulumi-package"
+            "importBasePath": "github.com/pulumi/pulumi-package/sdk/go/pulumipackage"
         },
         "nodejs": {
             "dependencies": {

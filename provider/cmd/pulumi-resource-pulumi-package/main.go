@@ -27,8 +27,13 @@ var providerName = "pulumi-package"
 
 func main() {
 	components := []component.Component{
-		component.StaticPageComponent,
+		component.PackageComponent,
 	}
-	invokes := []invoke.Invoke{}
+	invokes := []invoke.Invoke{
+		invoke.Generate,
+		invoke.New,
+		invoke.Install,
+		invoke.Publish,
+	}
 	provider.Serve(providerName, version.Version, pulumiSchema, components, invokes)
 }

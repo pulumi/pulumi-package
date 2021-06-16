@@ -14,8 +14,8 @@
     },
     "files": [
         "index.ts",
+        "package.ts",
         "provider.ts",
-        "staticPage.ts",
         "utilities.ts"
     ]
 }

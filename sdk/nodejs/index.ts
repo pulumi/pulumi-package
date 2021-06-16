@@ -5,31 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./package";
 export * from "./provider";
-export * from "./staticPage";
 
 // Import resources to register:
-import { StaticPage } from "./staticPage";
+import { Package } from "./package";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "pulumi-package:index:StaticPage":
-                return new StaticPage(name, <any>undefined, { urn })
+            case "pulumi-package:index:Package":
+                return new Package(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("pulumi-package", "index", _module)
+pulumi.runtime.registerResourceModule("pulumipackage", "index", _module)
 
 import { Provider } from "./provider";
 
-pulumi.runtime.registerResourcePackage("pulumi-package", {
+pulumi.runtime.registerResourcePackage("pulumipackage", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:pulumi-package") {
+        if (type !== "pulumi:providers:pulumipackage") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });
